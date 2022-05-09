@@ -1,6 +1,6 @@
 # individual-project-abhiteja
 ## Name: Abhiteja Mandava
-## SJSU ID: 016021785
+## SJSU ID: 015786550
 
 ## Project Description
 The purpose of this project is to create a Java application that will maintain a static database on its own. The changes to the data would not persist if we ran the software again. This application should allow users to purchase inventory items, with amounts limited per item type. User can buy the items among three different categories. They are:
