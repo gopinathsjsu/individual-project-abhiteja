@@ -18,7 +18,7 @@ public class Billing {
 
             if (args.length == 0) {
                 String fileExtension = "";
-                System.out.print("Enter the absolute path (or) file name for the input CSV file: ");
+                System.out.print("Enter the file name of input CSV file: ");
                 inputOrderPath = sc.nextLine();
                 int i = inputOrderPath.lastIndexOf('.');
                 if (i > 0) {
@@ -48,12 +48,11 @@ public class Billing {
             boolean success = CartManager.validateAndPlaceOrder(order, cardPath);
 
             String fName = success ? Config.SUCCESS_FILE_NAME : Config.ERROR_FILE_NAME;
-            System.out.println("Output has been written to " + fName);
+            System.out.println("Output generated " + fName);
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Exiting application...");
             System.exit(0);
         }
 
