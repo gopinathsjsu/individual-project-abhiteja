@@ -28,3 +28,11 @@ Requirements: Eclipse IDE
 ## Design Patterns
 
 Singleton Design Pattern: This Design Pattern belongs to the creational design pattern category and limits the instantiation of a class to a single object. This pattern helps in the formation of the application's database. A singleton InMemoryDB object is constructed and saved as a static member that all other classes can access without having to instantiate it every time.
+
+Composite Design Pattern: Composite pattern is a partitioning design pattern and describes a group of objects that is treated the same way as a single instance of the same type of object. The intent of a composite is to “compose” objects into tree structures to represent part-whole hierarchies. It allows you to have a tree structure and ask each node in the tree structure to perform a task.
+
+The composite pattern refers to a collection of objects that are considered in the same way as a single instance of the same type. We can retrieve individual OrderItems from the List of OrderItems in the Order.
+
+Adapter Pattern: The adapter pattern convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces.
+
+The FileUtility class is designed to read input files into Inventory and Order
