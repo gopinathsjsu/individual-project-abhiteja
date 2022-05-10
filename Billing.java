@@ -3,6 +3,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import com.aspose.cells.SaveFormat;
+import com.aspose.cells.Workbook;
+
 
 public class Billing {
 
@@ -12,6 +15,7 @@ public class Billing {
     	String inputOrderPath = null; 
     	String cardPath = Config.CARD_PATH;
     	String inventoryPath = Config.INVENTORY_PATH;
+    	boolean converted = false;
     	
     	if(args.length == 0) {
     		String fileExtension = "";
@@ -21,13 +25,26 @@ public class Billing {
     		if (i > 0) {
     		    fileExtension = inputOrderPath.substring(i+1);
     		}
+    		if(fileExtension.equals("xlsx")) {
+    			//convert xlsx to csv
+    			try {
+    				inputOrderPath = Config.CONVERTED_INPUT_CSV;
+    				Workbook book = new Workbook(inputOrderPath);
+    				book.save(inputOrderPath, SaveFormat.AUTO);
+    				converted = true;
+    				
+    			} catch (Exception e) {
+    				e.printStackTrace();
+    			}
+    		}
     	} else {
     		// inventoryPath = Paths.get(args[0]);
             inputOrderPath = Paths.get(args[1]).toString();
+            
     	}
         
-        shopInventory = FileUtility.readInventoryCSV(inventoryPath);
-        Order order = FileUtility.readInputCSV(inputOrderPath.toString());
+        shopInventory = FileManager.readInventoryCSV(inventoryPath);
+        Order order = FileManager.readInputCSV(inputOrderPath, converted);
         
         boolean success = CartManager.validateAndPlaceOrder(order, cardPath);
         
