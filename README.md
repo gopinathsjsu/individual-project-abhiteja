@@ -35,6 +35,8 @@ The composite pattern refers to a collection of objects that are considered in t
 
 Adapter Pattern: The adapter pattern convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces.
 
-The FileUtility class is designed to read input files into Inventory and Order
+The FileUtility class is designed to read input files into Inventory and Order.
+
+UML Class Diagram :
 
 ![202_ClassDiagram drawio](https://user-images.githubusercontent.com/90536339/167563113-69133ee6-4ea2-40d0-85fd-42748fd911c9.png)
