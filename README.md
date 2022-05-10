@@ -1,42 +1,60 @@
-# individual-project-abhiteja
+# Individual Project - Sai Kiran Madupu - 015505243
 
-## Name: Abhiteja Mandava
+## Project Requirements:
+The application should maintain an internal, static database (inventory of stock)  (this may be developed using HashMaps and/or other  built-in Java Data structures). This means once we re-run the program, the changes to the data would not persist. We will provide the data that has to be maintained. The data will contain the following tables and fields:
 
-## SJSU ID: 015786550
+### Table 1: Items
+- Category (Essentials, Luxury, Miscellaneous)
+- Item for each category (Essentials - Clothes, soap, milk; Luxury - perfume, chocolates; Misc - Bedsheets, footwear)
+- The available Quantity of each item
+- Price of each item
 
-## Project Description
+### Table 2: Cards
+- Card Numbers
 
-The purpose of this project is to create a Java application that will maintain a static database on its own. The changes to the data would not persist if we ran the software again. This application should allow users to purchase inventory items, with amounts limited per item type. User can buy the items among three different categories. They are:
+Input CSV file will contain an order including Items, Quantity needed, and the payment card number.
 
-Essentials,
-Luxury,
-Misc
+Input file should be processed as follows:
+1. Validate if the requested quantity for each item is permissible. For example, if the request is to order 3 soaps, check the database if we have at least 3 soaps in our inventory.
+2. There will be a cap on the quantity of each category that can be ordered in one single order. For example, restrict Essentials to a maximum of 3, Luxury to 4, and Misc to 6. (This will be configured beforehand)
+3. In case it is an incorrect request, generate and output TXT file with message "Please correct quantities." and include the items with incorrect quantities
+4. After this validation, if the cart is valid, calculate prices for the cart.
+5. Take the card number of the user and if it is not present in DB add it.
+6. Output the CSV list with the total amount paid.
 
-When the user input criterion is met, a bill amount should be calculated; otherwise, an error notice should be displayed, indicating the products with wrong values.
-
-## Instructions
-
-Requirements: Eclipse IDE
-
-- Go to repo abhiteja and clone the repository or download the zip file.
-- Open the zipped folder or the entire folder in eclipse by navigating to File -> Open.
-- After opening the project go to Billing.java and run the project.
-- Make sure the java version used is compatible.
-- Enter the input file.
-- Once the code is executed, you can check the output in Output.csv file which is created and if an error is occurred, you can check it in Error.txt.
+## Prerequisites
+- OpenJDK 16
+- Eclipse IDE
 
 ## Design Patterns
+- Composite Pattern: The composite pattern describes a group of objects that are treated the same way as a single instance of the same type of object. Order contains a List of OrderItems, where we can access individual OrderItems.
 
-Singleton Design Pattern: This Design Pattern belongs to the creational design pattern category and limits the instantiation of a class to a single object. This pattern helps in the formation of the application's database. A singleton InMemoryDB object is constructed and saved as a static member that all other classes can access without having to instantiate it every time.
+- Singleton Pattern: The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance. The Inventory List is single object that follows singleton design pattern and it acts as the in-memory data store.
 
-Composite Design Pattern: Composite pattern is a partitioning design pattern and describes a group of objects that is treated the same way as a single instance of the same type of object. The intent of a composite is to “compose” objects into tree structures to represent part-whole hierarchies. It allows you to have a tree structure and ask each node in the tree structure to perform a task.
+- Adapter Pattern: The FileUtility class reads input files into Inventory and Order
 
-The composite pattern refers to a collection of objects that are considered in the same way as a single instance of the same type. We can retrieve individual OrderItems from the List of OrderItems in the Order.
+## Run the Project
+1. Navigate to the root folder of the project
+2. Execute the below command in the terminal
+`java -cp bin main.Billing "Dataset - Sheet1.csv" "Cards - Sheet1.csv" "Input1 - Sheet1.csv"`
 
-Adapter Pattern: The adapter pattern convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces.
+The application expects three command line arguments in the same order:
+1. Dataset CSV
+2. Cards CSV
+3. Input CSV
 
-The FileUtility class is designed to read input files into Inventory and Order.
 
-UML Class Diagram :
+## UML Class Diagram
+![image](https://user-images.githubusercontent.com/18122083/166617019-cc3e5f52-4e12-4020-bcf8-7e72090e4426.png)
 
-![202_ClassDiagram drawio](https://user-images.githubusercontent.com/90536339/167563113-69133ee6-4ea2-40d0-85fd-42748fd911c9.png)
+
+## Success Output
+<img width="324" alt="image" src="https://user-images.githubusercontent.com/18122083/166613645-5d0b0477-d2a4-4235-a6ee-1d62902315b8.png">
+
+## Error Output
+<img width="531" alt="image" src="https://user-images.githubusercontent.com/18122083/166613678-8b859f65-aad3-494e-a66c-4e4f7fa64a44.png">
+
+
+
+
+
